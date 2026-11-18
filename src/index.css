@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --color-ink-950: #08070d;
+  --color-ink-900: #0b0a12;
+  --color-ink-850: #110f1a;
+  --color-ink-800: #161321;
+  --color-ink-750: #1b1728;
+  --color-ink-700: #221d32;
+  --color-ink-600: #2c2640;
+  --color-accent: #8b5cf6;
+  --color-accent-soft: #a78bfa;
+
+  --animate-fade-in: fade-in 0.22s ease-out both;
+  --animate-fade-out: fade-out 0.2s ease-in both;
+  --animate-rise: rise 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-tab: tab-in 0.32s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-page-in: page-in 0.36s cubic-bezier(0.2, 0.85, 0.25, 1) both;
+  --animate-page-out: page-out 0.28s cubic-bezier(0.4, 0, 1, 1) both;
+  --animate-sheet-in: sheet-in 0.38s cubic-bezier(0.2, 0.85, 0.25, 1) both;
+  --animate-sheet-out: sheet-out 0.24s cubic-bezier(0.4, 0, 1, 1) both;
+  --animate-toast: toast-in 0.35s cubic-bezier(0.2, 0.85, 0.25, 1) both;
+  --animate-pop: pop 0.5s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-glow: glow 3.2s ease-in-out infinite;
+
+  @keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+  @keyframes fade-out { from { opacity: 1 } to { opacity: 0 } }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: none } }
+  @keyframes tab-in { from { opacity: 0; transform: translateY(8px) scale(0.99) } to { opacity: 1; transform: none } }
+  @keyframes page-in { from { transform: translateX(100%); box-shadow: -20px 0 40px rgba(0,0,0,0) } to { transform: translateX(0); box-shadow: -20px 0 40px rgba(0,0,0,.45) } }
+  @keyframes page-out { from { transform: translateX(var(--from, 0px)) } to { transform: translateX(100%) } }
+  @keyframes sheet-in { from { transform: translateY(100%) } to { transform: translateY(0) } }
+  @keyframes sheet-out { from { transform: translateY(var(--from, 0px)) } to { transform: translateY(100%) } }
+  @keyframes toast-in { from { opacity: 0; transform: translateY(-16px) scale(0.96) } to { opacity: 1; transform: none } }
+  @keyframes pop { 0% { transform: scale(0.6); opacity: 0 } 100% { transform: scale(1); opacity: 1 } }
+  @keyframes shimmer { from { background-position: -200% 0 } to { background-position: 200% 0 } }
+  @keyframes glow { 0%, 100% { opacity: 0.55 } 50% { opacity: 0.9 } }
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    background: var(--color-ink-900);
+  }
+  html {
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    color: #fff;
+    font-family: var(--font-sans);
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+  button,
+  [role='button'] {
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  button:disabled {
+    cursor: default;
+  }
+  input,
+  textarea,
+  select {
+    font-size: 16px; /* prevents iOS zoom on focus */
+    color: #fff;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: rgb(255 255 255 / 0.32);
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent-soft);
+    outline-offset: 2px;
+  }
+}
+
+@utility scroll-area {
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility pt-safe {
+  padding-top: max(env(safe-area-inset-top), 16px);
+}
+
+@utility pb-safe {
+  padding-bottom: max(env(safe-area-inset-bottom), 12px);
+}
+
+@utility skeleton {
+  background: linear-gradient(90deg, rgb(255 255 255 / 0.04) 25%, rgb(255 255 255 / 0.09) 50%, rgb(255 255 255 / 0.04) 75%);
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@utility glow-purple {
+  box-shadow: 0 0 0 1px rgb(139 92 246 / 0.25), 0 10px 40px -10px rgb(139 92 246 / 0.45);
+}

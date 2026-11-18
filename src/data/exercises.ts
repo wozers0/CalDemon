@@ -1,0 +1,63 @@
+import type { Exercise, Muscle } from '../types';
+
+type Row = [id: string, name: string, muscle: Muscle, equipment: string, mode: 'reps' | 'time', weighted: boolean, cue: string];
+
+const rows: Row[] = [
+  ['bench-press', 'Bench Press', 'Chest', 'Barbell', 'reps', true, 'Shoulder blades squeezed, feet planted, bar to mid-chest.'],
+  ['incline-db-press', 'Incline Dumbbell Press', 'Chest', 'Dumbbells', 'reps', true, 'Bench at 30°, press up and slightly in.'],
+  ['db-bench-press', 'Dumbbell Bench Press', 'Chest', 'Dumbbells', 'reps', true, 'Control the lowering, elbows around 45°.'],
+  ['push-up', 'Push-Up', 'Chest', 'Bodyweight', 'reps', false, 'Body in one line, chest to just above the floor.'],
+  ['cable-fly', 'Cable Fly', 'Chest', 'Cable', 'reps', true, 'Soft elbows, hug a big tree.'],
+  ['dip', 'Dip', 'Chest', 'Bodyweight', 'reps', false, 'Slight forward lean, shoulders down.'],
+  ['pull-up', 'Pull-Up', 'Back', 'Bodyweight', 'reps', false, 'Full hang to chin over bar. Use a band if needed.'],
+  ['lat-pulldown', 'Lat Pulldown', 'Back', 'Cable', 'reps', true, 'Pull elbows to your back pockets.'],
+  ['barbell-row', 'Barbell Row', 'Back', 'Barbell', 'reps', true, 'Hinge to ~45°, row bar to lower ribs.'],
+  ['db-row', 'One-Arm Dumbbell Row', 'Back', 'Dumbbells', 'reps', true, 'Flat back, drive elbow toward hip.'],
+  ['seated-row', 'Seated Cable Row', 'Back', 'Cable', 'reps', true, 'Tall chest, squeeze shoulder blades together.'],
+  ['face-pull', 'Face Pull', 'Shoulders', 'Cable', 'reps', true, 'Pull to eye level, thumbs back.'],
+  ['deadlift', 'Deadlift', 'Back', 'Barbell', 'reps', true, 'Bar over mid-foot, brace, push the floor away.'],
+  ['overhead-press', 'Overhead Press', 'Shoulders', 'Barbell', 'reps', true, 'Squeeze glutes, press bar in a straight line.'],
+  ['shoulder-press', 'Dumbbell Shoulder Press', 'Shoulders', 'Dumbbells', 'reps', true, 'Ribs down, press overhead without arching.'],
+  ['lateral-raise', 'Lateral Raise', 'Shoulders', 'Dumbbells', 'reps', true, 'Lead with elbows, stop at shoulder height.'],
+  ['rear-delt-fly', 'Rear Delt Fly', 'Shoulders', 'Dumbbells', 'reps', true, 'Hinge forward, sweep arms wide.'],
+  ['bicep-curl', 'Bicep Curl', 'Arms', 'Dumbbells', 'reps', true, 'Elbows pinned, no swinging.'],
+  ['hammer-curl', 'Hammer Curl', 'Arms', 'Dumbbells', 'reps', true, 'Neutral grip, slow on the way down.'],
+  ['tricep-pushdown', 'Tricep Pushdown', 'Arms', 'Cable', 'reps', true, 'Elbows tucked, fully lock out.'],
+  ['skull-crusher', 'Overhead Tricep Extension', 'Arms', 'Dumbbells', 'reps', true, 'Elbows pointing up, stretch fully.'],
+  ['back-squat', 'Back Squat', 'Legs', 'Barbell', 'reps', true, 'Brace, knees track over toes, hips below parallel if comfortable.'],
+  ['goblet-squat', 'Goblet Squat', 'Legs', 'Dumbbells', 'reps', true, 'Hold weight at chest, sit between your heels.'],
+  ['leg-press', 'Leg Press', 'Legs', 'Machine', 'reps', true, 'Lower under control, don\'t lock knees hard.'],
+  ['rdl', 'Romanian Deadlift', 'Glutes', 'Barbell', 'reps', true, 'Soft knees, push hips back, feel the hamstrings.'],
+  ['lunge', 'Walking Lunge', 'Legs', 'Dumbbells', 'reps', true, 'Long stride, back knee kisses the floor.'],
+  ['split-squat', 'Bulgarian Split Squat', 'Legs', 'Dumbbells', 'reps', true, 'Rear foot elevated, stay tall.'],
+  ['leg-curl', 'Leg Curl', 'Legs', 'Machine', 'reps', true, 'Squeeze at the top, slow return.'],
+  ['leg-extension', 'Leg Extension', 'Legs', 'Machine', 'reps', true, 'Pause at the top.'],
+  ['hip-thrust', 'Hip Thrust', 'Glutes', 'Barbell', 'reps', true, 'Chin tucked, ribs down, squeeze glutes at top.'],
+  ['glute-bridge', 'Glute Bridge', 'Glutes', 'Bodyweight', 'reps', false, 'Press through heels, hold the top for a second.'],
+  ['calf-raise', 'Calf Raise', 'Legs', 'Machine', 'reps', true, 'Full stretch at the bottom, pause at the top.'],
+  ['bodyweight-squat', 'Bodyweight Squat', 'Legs', 'Bodyweight', 'reps', false, 'Arms forward for balance, sit back and down.'],
+  ['plank', 'Plank', 'Core', 'Bodyweight', 'time', false, 'Squeeze glutes, push the floor away.'],
+  ['side-plank', 'Side Plank', 'Core', 'Bodyweight', 'time', false, 'Hips high, body in a straight line.'],
+  ['dead-bug', 'Dead Bug', 'Core', 'Bodyweight', 'reps', false, 'Lower back stays on the floor.'],
+  ['hanging-knee-raise', 'Hanging Knee Raise', 'Core', 'Bodyweight', 'reps', false, 'Curl the pelvis up, no swinging.'],
+  ['cable-crunch', 'Cable Crunch', 'Core', 'Cable', 'reps', true, 'Round the spine, elbows to knees.'],
+  ['bird-dog', 'Bird Dog', 'Core', 'Bodyweight', 'reps', false, 'Reach long, keep hips level.'],
+  ['kettlebell-swing', 'Kettlebell Swing', 'Full Body', 'Kettlebell', 'reps', true, 'Hinge and snap the hips, arms are just ropes.'],
+  ['burpee', 'Burpee', 'Full Body', 'Bodyweight', 'reps', false, 'Move at a pace you can hold with good form.'],
+  ['farmer-carry', 'Farmer Carry', 'Full Body', 'Dumbbells', 'time', true, 'Tall posture, short quick steps.'],
+  ['brisk-walk', 'Brisk Walk', 'Cardio', 'None', 'time', false, 'Comfortable pace where you can still talk.'],
+  ['cycling', 'Easy Cycling', 'Cardio', 'Bike', 'time', false, 'Light resistance, steady breathing.'],
+  ['cat-cow', 'Cat-Cow', 'Mobility', 'Mat', 'reps', false, 'Move slowly with your breath.'],
+  ['worlds-greatest', "World's Greatest Stretch", 'Mobility', 'Mat', 'reps', false, 'Lunge, elbow to instep, rotate open.'],
+  ['hip-flexor-stretch', 'Hip Flexor Stretch', 'Mobility', 'Mat', 'time', false, 'Tuck pelvis, gentle forward shift.'],
+  ['hamstring-stretch', 'Hamstring Stretch', 'Mobility', 'Mat', 'time', false, 'Hinge from hips, long spine.'],
+  ['childs-pose', "Child's Pose", 'Mobility', 'Mat', 'time', false, 'Breathe into your back.'],
+  ['thoracic-rotation', 'Thoracic Rotation', 'Mobility', 'Mat', 'reps', false, 'Follow your hand with your eyes.'],
+  ['foam-roll', 'Foam Rolling', 'Mobility', 'Foam Roller', 'time', false, 'Slow passes, breathe through tight spots.'],
+];
+
+export const BUILT_IN_EXERCISES: Exercise[] = rows.map(([id, name, muscle, equipment, mode, weighted, cue]) => ({
+  id, name, muscle, equipment, mode, weighted, cue,
+}));
+
+export const MUSCLES: Muscle[] = ['Chest', 'Back', 'Shoulders', 'Arms', 'Legs', 'Glutes', 'Core', 'Full Body', 'Cardio', 'Mobility'];
